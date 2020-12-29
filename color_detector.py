@@ -12,7 +12,6 @@ img_path = filedialog.askopenfilename(filetypes = (("image files","*.jpg;*.png;*
 
 #Reading the image with opencv
 img = cv2.imread(img_path)
-print(img)
 if not isinstance(img, np.ndarray):
     raise SystemExit
 
@@ -47,7 +46,6 @@ def draw_function(event, x,y,flags,param):
        
 cv2.namedWindow('Color detector')
 cv2.setMouseCallback('Color detector',draw_function)
-
 while(1):
 
     cv2.imshow("Color detector",img)
@@ -57,7 +55,7 @@ while(1):
         cv2.rectangle(img,(20,20), (750,60), (b,g,r), -1)
 
         #Creating text string to display( Color name and RGB values )
-        text = getColorName(r,g,b) + ' R='+ str(r) +  ' G='+ str(g) +  ' B='+ str(b)
+        text = f"{getColorName(r,g,b)} R={str(r)} G={str(g)} B={str(b)}"
         
         #cv2.putText(img,text,start,font(0-7),fontScale,color,thickness,lineType )
         cv2.putText(img, text,(50,50),2,0.8,(255,255,255),2,cv2.LINE_AA)
